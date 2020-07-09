@@ -19,6 +19,7 @@ namespace TicTacToe
         bool Win = false;
         int turnCount = 0;
         int pictureCounter = 1;
+        int pictureCounter2 = 1;
         string onePic = null;
         string twoPic = null;
         string threePic = null;
@@ -65,30 +66,32 @@ namespace TicTacToe
         private void Player_Click(object sender, EventArgs e)
         {
             PictureBox pic = (PictureBox)sender;
-            
-            
-            if(pic.Tag != String.Empty)
+
+            if (pictureCounter == 1)
             {
-                return;
+                if (pic.Tag != String.Empty)
+                {
+                    return;
+                }
+
+                if (xPlayerTurn)
+                {
+                    pic.Tag = "X";
+                    picture = pic;
+                    timer1.Start();
+                }
+                else
+                {
+                    pic.Tag = "O";
+                    picture = pic;
+                    timer1.Start();
+                }
+                turnCount++;
+                PlaySound("click2_sound_wav");
+                WinnerCellsChangeColor();
+                CheckForDraw();
+                xPlayerTurn = !xPlayerTurn;
             }
-            
-            if (xPlayerTurn)
-            {
-                pic.Tag = "X";
-                picture = pic;
-                timer1.Start();
-            }
-            else
-            {
-                pic.Tag = "O";
-                picture = pic;
-                timer1.Start();
-            }
-            turnCount++;
-            PlaySound("click2_sound_wav");
-            WinnerCellsChangeColor();
-            CheckForDraw();
-            xPlayerTurn = !xPlayerTurn;         
         }
 
         private void WinnerCellsChangeColor()
@@ -172,7 +175,7 @@ namespace TicTacToe
         private void GameOver()
         {
             string winner;
-            if (xPlayerTurn)
+            if (xwin == true)
             {
                 winner = "X";
             }
@@ -186,6 +189,7 @@ namespace TicTacToe
         }
         private void Animate()
         {
+         
             string pictureName;
             
             string turn;
