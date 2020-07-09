@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,16 @@ namespace TicTacToe
     public partial class Form1 : Form
     {
         bool xPlayerTurn = true;
+        bool xwin = true;
+        bool Win = false;
         int turnCount = 0;
+        int pictureCounter = 1;
+        string onePic = null;
+        string twoPic = null;
+        string threePic = null;
+
+
+        PictureBox picture;
         public Form1()
         {
             InitializeComponent();
@@ -24,114 +34,122 @@ namespace TicTacToe
 
         private void InitializeGrid()
         {
-            Grid.BackColor = Color.LightCoral;
+            Grid.BackColor = Color.Black;
             Grid.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
+
         }
 
         private void RestartGame()
         {
             InitializeCells();
             turnCount = 0;
+            Win = false;
         }
 
 
         private void InitializeCells()
         {
             string labelName;
-            for(int i = 1; i <= 9; i++)
+            
+            for (int i = 1; i <= 9; i++)
             {
-                labelName = "label" + i;
-                Grid.Controls[labelName].Text = String.Empty;
-                Grid.Controls[labelName].BackColor = Color.Transparent;
+                labelName = "pictureBox" + i;
+                PictureBox picture;
+                picture = (PictureBox)Grid.Controls[labelName];
+                picture.Tag = String.Empty;
+                picture.BackColor = Color.Transparent;
+                picture.Image = null;
             }            
         }
 
         private void Player_Click(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            PictureBox pic = (PictureBox)sender;
             
-            if(label.Text != String.Empty)
+            
+            if(pic.Tag != String.Empty)
             {
                 return;
             }
             
             if (xPlayerTurn)
             {
-                label.Text = "X";
+                pic.Tag = "X";
+                picture = pic;
+                timer1.Start();
             }
             else
             {
-                label.Text = "O";
+                pic.Tag = "O";
+                picture = pic;
+                timer1.Start();
             }
             turnCount++;
-            PlaySound("beep_sound");
-            CheckForWin();            
+            PlaySound("click2_sound_wav");
+            WinnerCellsChangeColor();
             CheckForDraw();
             xPlayerTurn = !xPlayerTurn;         
-        }
-       
-
-        private void CheckForWin()
-        {
-            if (
-                    (label1.Text == label2.Text && label2.Text == label3.Text && label1.Text != String.Empty) ||
-                    (label4.Text == label5.Text && label5.Text == label6.Text && label4.Text != String.Empty) ||
-                    (label7.Text == label8.Text && label8.Text == label9.Text && label7.Text != String.Empty) ||
-                    (label1.Text == label4.Text && label4.Text == label7.Text && label1.Text != String.Empty) ||
-                    (label2.Text == label5.Text && label5.Text == label8.Text && label2.Text != String.Empty) ||
-                    (label3.Text == label6.Text && label6.Text == label9.Text && label3.Text != String.Empty) ||
-                    (label1.Text == label5.Text && label5.Text == label9.Text && label1.Text != String.Empty) ||
-                    (label3.Text == label5.Text && label5.Text == label7.Text && label3.Text != String.Empty)
-                )
-            {
-                GameOver();
-            }
         }
 
         private void WinnerCellsChangeColor()
         {
-            if (label1.Text == label2.Text && label1.Text == label3.Text && label1.Text != "")
+            if (pictureBox1.Tag == pictureBox2.Tag && pictureBox1.Tag == pictureBox3.Tag && pictureBox1.Tag != "")
             {
-                ChangeCellColors(label1, label2, label3, Color.Purple);
+                ChangeImage(pictureBox1, pictureBox2, pictureBox3);
+                
             }
-            else if (label4.Text == label5.Text && label4.Text == label6.Text && label4.Text != "")
+            else if (pictureBox4.Tag == pictureBox5.Tag && pictureBox4.Tag == pictureBox6.Tag && pictureBox4.Tag != "")
             {
-                ChangeCellColors(label4, label5, label6, Color.Purple);
+                ChangeImage(pictureBox4, pictureBox5, pictureBox6);
+                
             }
-            else if (label7.Text == label8.Text && label7.Text == label9.Text && label7.Text != "")
+            else if (pictureBox7.Tag == pictureBox8.Tag && pictureBox7.Tag == pictureBox9.Tag && pictureBox7.Tag != "")
             {
-                ChangeCellColors(label7, label8, label9, Color.Purple);
+                ChangeImage(pictureBox7, pictureBox8, pictureBox9);
+                
             }
-            else if (label1.Text == label4.Text && label1.Text == label7.Text && label1.Text != "")
+            else if (pictureBox1.Tag == pictureBox4.Tag && pictureBox1.Tag == pictureBox7.Tag && pictureBox1.Tag != "")
             {
-                ChangeCellColors(label1, label4, label7, Color.Purple);
+                ChangeImage(pictureBox1, pictureBox4, pictureBox7);
+                
             }
-            else if (label2.Text == label5.Text && label2.Text == label8.Text && label2.Text != "")
+            else if (pictureBox2.Tag == pictureBox5.Tag && pictureBox2.Tag == pictureBox8.Tag && pictureBox2.Tag != "")
             {
-                ChangeCellColors(label2, label5, label8, Color.Purple);
+                ChangeImage(pictureBox2, pictureBox5, pictureBox8);
+                
             }
-            else if (label3.Text == label6.Text && label3.Text == label9.Text && label3.Text != "")
+            else if (pictureBox3.Tag == pictureBox6.Tag && pictureBox3.Tag == pictureBox9.Tag && pictureBox3.Tag != "")
             {
-                ChangeCellColors(label3, label6, label9, Color.Purple);
+                ChangeImage(pictureBox3, pictureBox6, pictureBox9);
+                
             }
-            else if (label1.Text == label5.Text && label1.Text == label9.Text && label1.Text != "")
+            else if (pictureBox1.Tag == pictureBox5.Tag && pictureBox1.Tag == pictureBox9.Tag && pictureBox1.Tag != "")
             {
-                ChangeCellColors(label1, label5, label9, Color.Purple);
+                ChangeImage(pictureBox1, pictureBox5, pictureBox9);
+                
             }
-            else if (label3.Text == label5.Text && label3.Text == label7.Text && label3.Text != "")
+            else if (pictureBox3.Tag == pictureBox5.Tag && pictureBox3.Tag == pictureBox7.Tag && pictureBox3.Tag != "")
             {
-                ChangeCellColors(label3, label5, label7, Color.Purple);
+                ChangeImage(pictureBox3, pictureBox5, pictureBox7);
+               
             }
 
         }
-        private void ChangeCellColors(Label firstLabel, Label secondLabel, Label thirdLabel, Color color)
+        private void ChangeImage(PictureBox one, PictureBox two, PictureBox three)
         {
-            firstLabel.BackColor = color;
-            secondLabel.BackColor = color;
-            thirdLabel.BackColor = color;
+            onePic = one.Name;
+            twoPic = two.Name;
+            threePic = three.Name;
+            if (one.Tag == "O")
+            {
+                xwin = false;
+            }
+            else
+            {             
+                xwin = true;
+            }
+            Win = true;
         }
-
-
         private void PlaySound(string soundName)
         {
             System.IO.Stream str = (System.IO.Stream)Properties.Resources.ResourceManager.GetObject(soundName);
@@ -141,9 +159,11 @@ namespace TicTacToe
 
         private void CheckForDraw() 
         { 
-            if(turnCount == 9)
+
+            if(turnCount == 9 && Win == false)
             {
-                PlaySound("click_sound");
+                
+                PlaySound("beep_sound");
                 MessageBox.Show("Draw!");                
                 RestartGame();
             }
@@ -160,9 +180,55 @@ namespace TicTacToe
             {
                 winner = "O";
             }
-            WinnerCellsChangeColor();
+            
             MessageBox.Show(winner  + " wins!");
             RestartGame();
+        }
+        private void Animate()
+        {
+            string pictureName;
+            
+            string turn;
+            timer1.Start();
+            turn = picture.Tag.ToString();
+            pictureName = turn.ToLower() + "_frame_0" + pictureCounter.ToString("00");
+            picture.Image = (Image)Properties.Resources.ResourceManager.GetObject(pictureName);
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureCounter += 1;
+            if (pictureCounter > 20)
+            {         
+                timer1.Stop();
+                if (Win == true)
+                {
+                    PictureBox onePicture;
+                    onePicture = (PictureBox)Grid.Controls[onePic];
+                    PictureBox twoPicture;
+                    twoPicture = (PictureBox)Grid.Controls[twoPic];
+                    PictureBox threePicture;
+                    threePicture = (PictureBox)Grid.Controls[threePic];
+
+                    if (xwin == false)
+                    {
+                        onePicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("o_win");
+                        twoPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("o_win");
+                        threePicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("o_win");
+                    }
+                    else
+                    {
+                        onePicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("x_win");
+                        twoPicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("x_win");
+                        threePicture.Image = (Image)Properties.Resources.ResourceManager.GetObject("x_win");
+                    }
+
+                    GameOver();
+                }
+                pictureCounter = 1;
+            } 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Animate();
         }
     }
 }

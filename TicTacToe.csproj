@@ -86,5 +86,137 @@
   <ItemGroup>
     <None Include="Resources\beep_sound.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\click2_sound.wav.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-017.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-018.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-019.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame-020.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-017.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-018.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-019.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-frame-020.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\o-win.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-win.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
